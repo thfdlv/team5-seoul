@@ -1,16 +1,25 @@
-version: 0.0
-os: linux
-files:
-  - source: project1.war
-    destination: /opt/tomcat/tomcat-10/webapps
-  - source: scripts/
-    destination: /home/ec2-user/scripts
-hooks:
-  BeforeInstall:
-    - location: scripts/beforeInstall.sh
-      timeout: 300
-      runas: ec2-user
-  ApplicationStart:
-    - location: scripts/deploy.sh
-      timeout: 300
-      runas: ec2-user
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  build:
+    commands:
+      - echo "🔧 Maven 빌드 시작"
+      - cd project1
+      - mvn clean package -DskipTests
+  post_build:
+    commands:
+      - echo "📦 deploy 디렉토리 준비"
+      - mkdir -p ../deploy
+      - cp target/*.war ../deploy/project1.war
+      - cd ..
+      - cp appspec.yml deploy/
+      - cp -r scripts deploy/
+      - echo "📂 deploy 폴더 내용:"
+      - ls -alR deploy
+
+artifacts:
+  files:
+    - deploy/**/*
