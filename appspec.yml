@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: project1.war
-    destination: /home/ec2-user/app
+    destination: /opt/tomcat/tomcat-10/webapps
   - source: scripts/
     destination: /home/ec2-user/scripts
 hooks:
