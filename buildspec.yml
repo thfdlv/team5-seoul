@@ -19,9 +19,12 @@ phases:
       - cd ..
       - cp appspec.yml deploy/
       - cp -r scripts deploy/
-      - echo "📦 deploy 폴더 구성:"
+      - echo "📤 S3로 수동 업로드 시작"
+      - aws s3 cp deploy/ s3://s3-team5/team5-seoul-build/deploy/ --recursive
+      - echo "✅ deploy 폴더 구성:"
       - ls -alR deploy/
 
 artifacts:
+  base-directory: deploy
   files:
-    - deploy/**/*
+    - '**/*'
