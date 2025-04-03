@@ -1,10 +1,4 @@
 #!/bin/bash
-set -e
-
-echo "[BeforeInstall] 기존 앱 삭제 중..."
-
-if [ -d /home/ec2-user/app ]; then
-  rm -rf /home/ec2-user/app/*
-fi
-
-echo "[BeforeInstall] 완료!"
+echo "[🚀 BEFORE INSTALL] 이전 배포파일 제거 중..."
+rm -rf /opt/tomcat/tomcat-10/webapps/project1*
+rm -rf /home/ec2-user/scripts/*
