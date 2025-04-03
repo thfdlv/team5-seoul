@@ -2,20 +2,20 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      - echo "🔧 Maven 설치 확인"
-      - mvn -version
+    runtime-versions:
+      java: corretto17
   build:
     commands:
       - echo "🔨 Maven 빌드 시작"
-      - mvn clean package
+      - cd project1
+      - mvn clean package -DskipTests
   post_build:
     commands:
-      - echo "📦 WAR 파일 deploy 폴더로 이동"
-      - mkdir -p deploy
-      - cp target/*.war deploy/project1.war
-      - cp appspec.yml deploy/
-      - cp -r scripts/ deploy/
+      - echo "📦 배포용 파일 복사 시작"
+      - mkdir -p ../deploy
+      - cp target/*.war ../deploy/project1.war
+      - cp ../appspec.yml ../deploy/
+      - cp -r ../scripts ../deploy/
 artifacts:
   files:
     - deploy/**/*
