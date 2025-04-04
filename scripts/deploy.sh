@@ -1,16 +1,17 @@
 #!/bin/bash
 
-echo "🚀 [ApplicationStart] 배포 시작"
+echo "[🚀 DEPLOY] WAR 파일 실행 준비 중..."
 
-WAR_SOURCE="/home/ec2-user/app/project1.war"
-WAR_DEST="/opt/tomcat/tomcat-10/webapps/project1.war"
+# 기존 Tomcat 종료
+echo "[🛑] Tomcat 프로세스 종료 중..."
+sudo pkill -f 'org.apache.catalina.startup.Bootstrap'
 
 # WAR 복사
-echo "📦 WAR 복사: $WAR_SOURCE → $WAR_DEST"
-sudo cp "$WAR_SOURCE" "$WAR_DEST"
+echo "[📦] WAR 복사"
+sudo cp /home/ec2-user/app/project1.war /opt/tomcat/tomcat-10/webapps/
 
 # Tomcat 재시작
-echo "🔁 Tomcat 재시작"
-sudo systemctl restart tomcat
+echo "[🔁] Tomcat 재시작 중..."
+sudo /opt/tomcat/tomcat-10/bin/startup.sh
 
-echo "✅ [ApplicationStart] 배포 완료"
+echo "[✅] 배포 완료!"
