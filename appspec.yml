@@ -1,6 +1,5 @@
 version: 0.0
 os: linux
-
 files:
   - source: project1.war
     destination: /opt/tomcat/tomcat-10/webapps
