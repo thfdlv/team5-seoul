@@ -1,6 +1,4 @@
 name: Upload WAR zip to S3
-run: sudo apt-get update && sudo apt-get install zip -y
-
 
 on:
   push:
@@ -10,14 +8,13 @@ on:
 jobs:
   zip-and-upload:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create ZIP with buildspec.yml included
+      - name: Create ZIP including buildspec.yml
         run: |
-          zip -r team5-seoul.zip . -x "*.git*"
+          zip -r team5-seoul.zip . -x "*.git*" -x "*.idea*" -x "target/*"
 
       - name: Upload to S3
         uses: jakejarvis/s3-sync-action@master
