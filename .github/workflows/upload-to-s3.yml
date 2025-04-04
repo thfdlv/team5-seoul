@@ -1,20 +1,16 @@
 name: Upload WAR zip to S3
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:  # ✅ 수동 실행 가능하게 추가
+  workflow_dispatch:  # 수동 실행을 위한 트리거
 
 jobs:
   zip-and-upload:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create ZIP with buildspec.yml included
+      - name: Create ZIP including buildspec.yml
         run: |
           zip -r team5-seoul.zip . -x "*.git*"
 
