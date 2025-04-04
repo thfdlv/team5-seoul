@@ -1,4 +1,6 @@
 name: Upload WAR zip to S3
+run: sudo apt-get update && sudo apt-get install zip -y
+
 
 on:
   push:
