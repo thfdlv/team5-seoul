@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🔥 [BeforeInstall] 기존 WAR 및 디렉토리 삭제 시작"
+echo "[BeforeInstall] 기존 WAR 및 디렉토리 제거 시작"
 
 WAR_FILE="/opt/tomcat/tomcat-10/webapps/project1.war"
 WAR_DIR="/opt/tomcat/tomcat-10/webapps/project1"
@@ -15,6 +15,4 @@ if [ -d "$WAR_DIR" ]; then
   sudo rm -rf "$WAR_DIR"
 fi
 
-echo "✅ [BeforeInstall] 정리 완료"
-
-
+echo "[BeforeInstall] 정리 완료"
