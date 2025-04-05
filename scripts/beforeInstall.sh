@@ -7,12 +7,12 @@ WAR_DIR="/opt/tomcat/tomcat-10/webapps/project1"
 
 if [ -f "$WAR_FILE" ]; then
   echo "👉 WAR 파일 삭제: $WAR_FILE"
-  sudo rm -f "$WAR_FILE"
+  rm -f "$WAR_FILE"
 fi
 
 if [ -d "$WAR_DIR" ]; then
   echo "👉 explode 디렉토리 삭제: $WAR_DIR"
-  sudo rm -rf "$WAR_DIR"
+  rm -rf "$WAR_DIR"
 fi
 
 echo "[BeforeInstall] 정리 완료"
