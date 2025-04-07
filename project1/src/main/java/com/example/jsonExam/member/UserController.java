@@ -65,7 +65,7 @@ public class UserController {
             return "redirect:/login";
         }
 
-        session.setAttribute("id", user.getId()); // ✅ 이 줄 바로 아래에 추가!
+        session.setAttribute("id", user.getId()); // ✅ 로그인 성공 시 세션에 id 저장
         return "redirect:/template";
     }
 
@@ -188,3 +188,9 @@ public class UserController {
 
 
 }
+
+    
+    
+    
+
+

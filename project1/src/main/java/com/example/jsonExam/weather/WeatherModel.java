@@ -17,26 +17,34 @@ public class WeatherModel {
       this.date = date;
     }
 
-    public String getTemp() { return temp; }
-    public String getMoisture() { return moisture; }
-    public String getWindSpeed() { return windSpeed; }
-    public String getDate() { return date; }
+    public String getTemp() {
+      return temp;
+    }
+
+    public String getMoisture() {
+      return moisture;
+    }
+
+    public String getWindSpeed() {
+      return windSpeed;
+    }
+
+    public String getDate() {
+      return date;
+    }
   }
 
   public static class WeatherSearchData {
     private Weather response;
 
+    public List<WeatherItem> getWeatherItems() {
+      return this.response.body.items.item;
+    }
+
     public WeatherSearchData() {}
 
-    public Weather getResponse() { return response; }
-    public void setResponse(Weather response) { this.response = response; }
-
-    public List<WeatherItem> getWeatherItems() {
-      return response != null &&
-             response.getBody() != null &&
-             response.getBody().getItems() != null
-             ? response.getBody().getItems().getItem()
-             : List.of(); // 빈 리스트 반환
+    public Weather getResponse() {
+      return response;
     }
   }
 
@@ -44,30 +52,32 @@ public class WeatherModel {
     private WeatherData body;
 
     public Weather() {}
-    public WeatherData getBody() { return body; }
-    public void setBody(WeatherData body) { this.body = body; }
+    public WeatherData getBody() {
+      return body;
+    }
+  }
+
+  public static class WeatherArr {
+    public List<WeatherItem> getItem() {
+      return item;
+    }
+
+    List<WeatherItem> item;
   }
 
   public static class WeatherData {
     private String dataType;
     private WeatherArr items;
 
-    public WeatherData() {}
+    public String getDataType() {
+      return dataType;
+    }
 
-    public String getDataType() { return dataType; }
-    public void setDataType(String dataType) { this.dataType = dataType; }
+    public WeatherArr getItems() {
+      return items;
+    }
 
-    public WeatherArr getItems() { return items; }
-    public void setItems(WeatherArr items) { this.items = items; }
-  }
-
-  public static class WeatherArr {
-    private List<WeatherItem> item;
-
-    public WeatherArr() {}
-
-    public List<WeatherItem> getItem() { return item; }
-    public void setItem(List<WeatherItem> item) { this.item = item; }
+    public WeatherData() {};
   }
 
   public static class WeatherItem {
@@ -76,10 +86,12 @@ public class WeatherModel {
 
     public WeatherItem() {}
 
-    public String getCategory() { return category; }
-    public void setCategory(String category) { this.category = category; }
+    public String getCategory() {
+      return category;
+    }
 
-    public String getFcstValue() { return fcstValue; }
-    public void setFcstValue(String fcstValue) { this.fcstValue = fcstValue; }
+    public String getFcstValue() {
+      return fcstValue;
+    }
   }
 }

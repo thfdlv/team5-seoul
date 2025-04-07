@@ -188,6 +188,38 @@
 		.help-link:hover {
 		    text-decoration: underline;
 		}        
+		
+		.news-ticker-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.news-ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 20s linear infinite;
+  font-size: 14px;
+  padding-left: 100%;
+}
+
+.news-ticker span {
+  display: inline-block;
+  padding: 0 50px;
+  color: #333;
+}
+
+/* 애니메이션 정의 */
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+		
     </style>
 </head>
 <body>
@@ -208,8 +240,6 @@
             <li><a href="community" onclick="showSection('community')"><spring:message code="nav.community"/></a></li>
             <li><a href="weather" onclick="showSection('weather')"><spring:message code="nav.weather"/></a></li>
             <li><a href="news" onclick="showSection('news')"><spring:message code="nav.news"/></a></li>
-            <li> <a href="/project1/image"><spring:message code="nav.image.analysis"/></a></li>
-
         </ul>
         <a href="login" class="login-link" onclick="return login()"><spring:message code="login"/></a>
         <button onclick="location.href='http://www.team5.click/project1/Mypage'"><spring:message code="nav.mypage"/></button>

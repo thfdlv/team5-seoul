@@ -10,9 +10,10 @@
     <title><spring:message code="community.title"/></title>
     <script>
 	    const IS_LOGGED_IN = '${sessionScope.id}' !== '';
-	    const loginMessage = "<spring:message code='alert.login.required' />";
-
+	
 	    function checkLoginAndView(postId) {
+	        const loginMessage = '${msgLoginRequired}';
+	
 	        if (!IS_LOGGED_IN) {
 	            if (confirm(loginMessage)) {
 	                window.location.href = "/project1/login";
