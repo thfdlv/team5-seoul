@@ -95,6 +95,14 @@
             <artifactId>aws-java-sdk-rekognition</artifactId>
             <version>1.12.660</version>
         </dependency>
+
+        <!-- ✅ S3 관련 의존성 추가 -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.12.660</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -119,14 +127,11 @@
             </resource>
         </resources>
         <plugins>
-            <!-- WAR 생성 플러그인 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-
-            <!-- Spring Boot 빌드 플러그인 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -137,11 +142,12 @@
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
-                            <skip>true</skip> <!-- WAR에서는 repackage 생략 -->
+                            <skip>true</skip>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+
 </project>
